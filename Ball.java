@@ -1,6 +1,7 @@
-import javax.swing;
-import java.io;
-import java.net.*
+import javax.swing.*;
+import java.io.*;
+import java.net.*;
+import java.util.*;
 
 public class Ball {
 	private int x;
@@ -50,7 +51,7 @@ public class Ball {
 	public void setHidden(boolean durr) {
 		hidden = durr;
 	}
-	public slowdown() {
+	public void slowdown() {
 		if (xVel >= wang) {
 			xVel -= wang;
 		}
