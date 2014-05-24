@@ -1,9 +1,9 @@
-/*
-  class CueBall 
- */
+//class CueBall
 
 public class CueBall extends Ball {
 
+	private int direction;
+	
 	public CueBall(int x, int y) {
 		super(0, x, y);
 	}
@@ -13,7 +13,9 @@ public class CueBall extends Ball {
 		setYvel((double)vY);
 	}
 
-
-
+ 
+    public int setDirection(int dir){
+		direction = dir;
+    }
 
 } // end class Cue Ball
