@@ -7,14 +7,17 @@ import java.awt.*;
 
 public class Pool extends JPanel{
 	Image poolTable;
+	Image ball;
 	private ArrayList<Ball> balls = new ArrayList<Ball>();
 	private int winner = 0; //0 when nobody has won yet; 1 if player 1 wins, 2 if player 2 wins.
 
 	public Pool() {
 		Toolkit tkit = Toolkit.getDefaultToolkit();
 		poolTable = tkit.getImage(Pool.class.getResource("data/snookerTableBlue.jpg"));
-				
+		//ball = tkit.getImage(Pool.class.getResource("data/ball.jpg"));
 		addMouseListener(new MouseListener());
+		//add balls
+		Ball oneBall = new Ball(1, 200, 300);
 	}
 	
 	public static void main(String[] args) {
@@ -48,6 +51,14 @@ public class Pool extends JPanel{
 			Graphics2D g2 = (Graphics2D) g;
 			setBackground(Color.BLACK);
 			
+<<<<<<< HEAD
 			g2.drawImage(poolTable, 173, 155, this); //pool table dimensions 653 x 390
+=======
+			g2.drawImage(poolTable, 0, 0, this);
+			
+			for (int i = 0; i < balls.size(); i++) {
+				
+			}
+>>>>>>> 7749f803bc90063418ba0a467c4cf668418562bb
 		} // painting method
 }
