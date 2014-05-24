@@ -7,7 +7,9 @@ import java.awt.*;
 
 public class Pool extends JPanel{
 	Image poolTable;
-	Image ball;
+	Image redball;
+	Image blueball;
+	Image whiteball;
 	Image cue;
 	private ArrayList<Ball> balls = new ArrayList<Ball>();
 	private int winner = 0; //0 when nobody has won yet; 1 if player 1 wins, 2 if player 2 wins.
@@ -17,7 +19,9 @@ public class Pool extends JPanel{
 	public Pool() {
 		Toolkit tkit = Toolkit.getDefaultToolkit();
 		poolTable = tkit.getImage(Pool.class.getResource("data/snookerTableBlue.jpg"));
-		//ball = tkit.getImage(Pool.class.getResource("data/ball.jpg"));
+		redball = tkit.getImage(Pool.class.getResource("data/red.png"));
+		blueball = tkit.getImage(Pool.class.getResource("data/blue.png"));
+		whiteball = tkit.getImage(Pool.class.getResource("data/white.png"));
 		cue = tkit.getImage(Pool.class.getResource("data/cue.png"));
 		addMouseListener(new MouseListener());
 		//add balls
@@ -73,7 +77,7 @@ public class Pool extends JPanel{
 			g2.drawImage(poolTable, 173, 155, this); //pool table dimensions 653 x 390
 			
 			for (int i = 0; i < balls.size(); i++) {
-				
+				g2.drawImage(redball, (int)balls.get(i).getX(), (int)balls.get(i).getY(), this);
 			}
 			
 			//paint the cue
