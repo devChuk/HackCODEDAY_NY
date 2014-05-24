@@ -36,6 +36,12 @@ public class Pool extends JPanel{
 		Container c = frame.getContentPane();
 		c.add(p);
 		frame.setVisible(true);
+		while (true) {
+			c.repaint();
+			try {
+				Thread.sleep(20);
+			} catch (InterruptedException e) {}
+		}
 	}
 	
 	class MouseListener extends MouseAdapter {
