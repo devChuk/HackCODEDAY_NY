@@ -8,13 +8,14 @@ public class Ball {
 	private int xVel;
 	private int yVel;
 	private int wang; //It's an inside joke. This is meant to slow down velocity. The larger the wang, the faster it slows down.
+	private boolean hidden; //If the ball goes into a hole, hidden gets set true on Pool.java
 
 	public Ball(int x, int y) {
 		setX(x);
 		setY(y);
 		setXvel(0);
 		setYvel(0);
-
+		setHidden(false);
 	}
 	public int setX(int hurr) {
 		x = hurr;
@@ -45,6 +46,9 @@ public class Ball {
 	public void move() {
 		x += xVel;
 		y += yVel;
+	}
+	public void setHidden(boolean durr) {
+		hidden = durr;
 	}
 	public slowdown() {
 		if (xVel >= wang) {
