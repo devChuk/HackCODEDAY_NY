@@ -13,7 +13,7 @@ public class Pool extends JPanel{
 	public Pool() {
 		Toolkit tkit = Toolkit.getDefaultToolkit();
 		poolTable = tkit.getImage(Pool.class.getResource("data/snookerTableBlue.jpg"));
-		
+				
 		addMouseListener(new MouseListener());
 	}
 	
@@ -21,6 +21,7 @@ public class Pool extends JPanel{
 		Pool p = new Pool();
 		
 		JFrame frame = new JFrame("Pool");
+		frame.setResizable(false);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(800, 500);
 		Container c = frame.getContentPane();
