@@ -12,9 +12,8 @@ public class CueBall extends Ball {
 		setXvel((double)vX);
 		setYvel((double)vY);
 	}
-
  
-    public int setDirection(int dir){
+    public void setDirection(int dir){
 		direction = dir;
 		return direction;
     }

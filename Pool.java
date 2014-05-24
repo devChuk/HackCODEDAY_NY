@@ -12,6 +12,7 @@ public class Pool extends JPanel{
 	private ArrayList<Ball> balls = new ArrayList<Ball>();
 	private int winner = 0; //0 when nobody has won yet; 1 if player 1 wins, 2 if player 2 wins.
 	private boolean aboutToShoot;
+	private int cueX, cueY;
 	
 	public Pool() {
 		Toolkit tkit = Toolkit.getDefaultToolkit();
@@ -40,9 +41,11 @@ public class Pool extends JPanel{
 	class MouseListener extends MouseAdapter {
 		public void mouseClicked(MouseEvent e) {
 			if (!aboutToShoot) {
-				aboutToShoot = false;
+				aboutToShoot = true;
+				cueX = e.getX();
+				cueY = e.getY();
 			}
-			if (aboutToShoot) {
+			else if (aboutToShoot) {
 				int x = e.getX();
 				int y = e.getY();
 				int cueX = (int)balls.get(0).getX();
@@ -65,6 +68,11 @@ public class Pool extends JPanel{
 			
 			for (int i = 0; i < balls.size(); i++) {
 				
+			}
+			
+			//paint the cue
+			if (aboutToShoot) {
+				g2.drawImage(cue, cueX, cueY, this);
 			}
 		} // painting method
 }
