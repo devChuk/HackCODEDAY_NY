@@ -31,8 +31,9 @@ public class Pool extends JFrame{
 		}
 		
 		public void mouseClicked(MouseEvent e) {
-		
+			
 		}
+		
 		public void mouseReleased(MouseEvent e) {
 		
 		}
