@@ -10,4 +10,6 @@ public class Physics {
 		if (Math.sqrt(dx * dx + dy * dy) < BALL_SIZE) return true;
 		return false;
 	}
+	
+	
 }
