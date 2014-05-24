@@ -61,4 +61,5 @@ public class Ball {
 	}
 	public int getBallNumber() {return ballNumber;}
 	public void setBallNumber(int number) {ballNumber = number;}
+	public void shoot(int dx, int dy) {}
 }

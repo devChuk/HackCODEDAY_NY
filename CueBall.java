@@ -8,6 +8,10 @@ public class CueBall extends Ball {
 		super(0, x, y);
 	}
 
+	public void shoot(int vX, int vY) {
+		setXvel((double)vX);
+		setYvel((double)vY);
+	}
 
 
 
