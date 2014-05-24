@@ -15,6 +15,7 @@ public class CueBall extends Ball {
  
     public void setDirection(int dir){
 		direction = dir;
+		return direction;
     }
 
 } // end class Cue Ball
