@@ -8,6 +8,7 @@ import java.awt.*;
 public class Pool extends JPanel{
 	Image poolTable;
 	Image ball;
+	Image cue;
 	private ArrayList<Ball> balls = new ArrayList<Ball>();
 	private int winner = 0; //0 when nobody has won yet; 1 if player 1 wins, 2 if player 2 wins.
 
