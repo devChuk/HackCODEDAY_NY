@@ -11,6 +11,12 @@ public class Pool extends JFrame{
 	public Pool() {
 		setTitle("Pool");
 		setSize(500, 500);
+		setVisible(true);
+		addMouseListener(new MouseListener());
+	}
+	
+	public static void main(String[] args) {
+		Pool p = new Pool();
 	}
 	
 	class MouseListener extends MouseAdapter {
@@ -24,5 +30,5 @@ public class Pool extends JFrame{
 		public void mouseReleased(MouseEvent e) {
 		
 		}
-	}
+	} // end of MouseListener
 }
