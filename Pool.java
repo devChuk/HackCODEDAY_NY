@@ -27,7 +27,7 @@ public class Pool extends JPanel{
 		JFrame frame = new JFrame("Pool");
 		frame.setResizable(false);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(800, 500);
+		frame.setSize(1000, 700);
 		Container c = frame.getContentPane();
 		c.add(p);
 		frame.setVisible(true);
@@ -52,10 +52,14 @@ public class Pool extends JPanel{
 			Graphics2D g2 = (Graphics2D) g;
 			setBackground(Color.BLACK);
 			
+<<<<<<< HEAD
+			g2.drawImage(poolTable, 173, 155, this); //pool table dimensions 653 x 390
+=======
 			g2.drawImage(poolTable, 0, 0, this);
 			
 			for (int i = 0; i < balls.size(); i++) {
 				
 			}
+>>>>>>> 7749f803bc90063418ba0a467c4cf668418562bb
 		} // painting method
 }
