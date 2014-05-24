@@ -59,6 +59,6 @@ public class Ball {
 			yVel -= wang;
 		}
 	}
-	public int getballNumber() {return ballNumber;}
+	public int getBallNumber() {return ballNumber;}
 	public void setBallNumber(int number) {ballNumber = number;}
 }
