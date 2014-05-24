@@ -9,23 +9,26 @@ public class Player {
     protected int height;
 
     public Player(int width, int height) {
-    	
+
     }
 
-    public int getX()
-    {
+    public int getX() {
 	return this.x;
     }
 
-    public int getY()
-    {
+    public int getY() {
 	return this.y;
     }
+    public void moveRight() {
 
+    }
+    public void moveLeft() {
 
+    }
+    public void jump() {
 
+    }
+    public void stab() {
 
-
-
-
+    }
 }
