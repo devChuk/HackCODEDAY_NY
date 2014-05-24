@@ -29,7 +29,7 @@ public class Physics {
 		double dx = AxVel - BxVel;
 		double dy = AyVel - ByVel;
 		
-		double contactAngle = Math.atan2(dx, dy) * 180 / Math.PI;
+		double contactAngle = Math.atan2(dy, dx) * 180 / Math.PI;
 		
 		double theta = Math.atan2(dy, dx) * 180 / Math.PI;
 		//calculate A ball final X velocities
