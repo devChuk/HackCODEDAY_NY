@@ -11,7 +11,7 @@ public class Pool extends JPanel{
 	Image blueball;
 	Image whiteball;
 	Image cue;
-	private ArrayList<Ball> balls = new ArrayList<Ball>();
+	private static ArrayList<Ball> balls = new ArrayList<Ball>();
 	private int winner = 0; //0 when nobody has won yet; 1 if player 1 wins, 2 if player 2 wins.
 	private boolean aboutToShoot;
 	private int cueX, cueY;
@@ -32,6 +32,7 @@ public class Pool extends JPanel{
 	
 	public static void main(String[] args) {
 		Pool p = new Pool();
+		Physics phys = new Physics();
 		
 		JFrame frame = new JFrame("Pool");
 		frame.setResizable(false);
@@ -42,6 +43,13 @@ public class Pool extends JPanel{
 		frame.setVisible(true);
 		while (true) {
 			c.repaint();
+			for (int i = 0; i < balls.size(); i++) {
+				for (int j = i; j < balls.size(); j++) {
+					if (phys.willItCollide(balls.get(i), balls.get(j))) {
+						phys.calcFinalVelocity(balls.get(i), balls.get(j));
+					}
+				}
+			}
 			try {
 				Thread.sleep(20);
 			} catch (InterruptedException e) {}
