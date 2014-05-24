@@ -4,10 +4,10 @@ import java.net.*;
 import java.util.*;
 
 public class Ball {
-	private int x;
-	private int y;
-	private int xVel;
-	private int yVel;
+	private double x;
+	private double y;
+	private double xVel;
+	private double yVel;
 	private int wang; //It's an inside joke. This is meant to slow down velocity. The larger the wang, the faster it slows down.
 	private boolean hidden; //If the ball goes into a hole, hidden gets set true on Pool.java
 
@@ -18,30 +18,28 @@ public class Ball {
 		setYvel(0);
 		setHidden(false);
 	}
-	public int setX(int hurr) {
+	public void setX(double hurr) {
 		x = hurr;
-		return x;
 	}
-	public int setY(int hurr) {
+	public void setY(double hurr) {
 		y = hurr;
-		return y;
 	}
-	public int getX() {
+	public double getX() {
 		return x;
 	}
-	public int getY() {
+	public double getY() {
 		return x;
 	}
-	public int getXvel() {
+	public double getXvel() {
 		return xVel;
 	}
-	public int getYvel() {
+	public double getYvel() {
 		return yVel;
 	}
-	public void setXvel(int v) {
+	public void setXvel(double v) {
 		xVel = v;
 	}
-	public void setYvel(int v) {
+	public void setYvel(double v) {
 		yVel = v;
 	}
 	public void move() {
