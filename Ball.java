@@ -8,7 +8,7 @@ public class Ball {
 	private double y;
 	private double xVel;
 	private double yVel;
-	private int wang; //It's an inside joke. This is meant to slow down velocity. The larger the wang, the faster it slows down.
+	private double wang; //It's an inside joke. This is meant to slow down velocity. The larger the wang, the faster it slows down.
 	private boolean hidden; //If the ball goes into a hole, hidden gets set true on Pool.java
 
 	public Ball(int x, int y) {
