@@ -19,6 +19,9 @@ public class Pool extends JPanel{
 	private boolean aboutToShoot;
 	private int cueX, cueY;
 	private int rawX, rawY;
+	int ddddx = cueX - rawX;
+	int ddddy = cueY - rawY;
+	double multiplier = 0.1;
 	
 	public Pool() {
 		Toolkit tkit = Toolkit.getDefaultToolkit();
@@ -117,14 +120,13 @@ public class Pool extends JPanel{
 				cueY = e.getY();
 			}
 			else if (aboutToShoot) {
-				int rawX = e.getX();
-				int fawY = e.getY();
-				int cueX = (int)balls.get(0).getX();
-				int cueY = (int)balls.get(0).getY();
-				int dx = cueX - rawX;
-				int dy = cueY - rawY;
-				double multiplier = 0.1;
-				balls.get(0).shoot((int)(dx * multiplier), (int)(dy * multiplier));
+				rawX = e.getX();
+				rawY = e.getY();
+				cueX = (int)balls.get(0).getX();
+				cueY = (int)balls.get(0).getY();
+				ddddx = cueX - rawX;
+				ddddy = cueY - rawY;
+				balls.get(0).shoot((int)(ddddx * multiplier), (int)(ddddy * multiplier));
 				aboutToShoot = false;
 			}
 		}
@@ -151,15 +153,16 @@ public class Pool extends JPanel{
 			if (aboutToShoot) {
 				int dx = cueX - (int)balls.get(0).getX() - 12;
 				int dy = cueY - (int)balls.get(0).getY() - 12;
-				int theta = (int)Math.toDegrees(Math.atan2(dy, dx));
-				if (theta < 0) theta += 360;
+				double theta = Math.atan2(dy, dx);
+				if (theta < 0) theta += 2 * Math.PI;
 				
-				int magX = rawX - (int)balls.get(0).getX();
-				int magY = rawY - (int)balls.get(0).getY();
+				int magX = (int)(rawX - balls.get(0).getX());
+				int magY = (int)(rawY - balls.get(0).getY());
+				double mag = Math.sqrt(magX * magX + magY * magY);
 				
-				System.out.println(theta);
+				//System.out.println(theta);
 				g2.rotate(Math.toRadians(-38 + theta), cueX, cueY);
-				g2.drawImage(cue, (int)balls.get(0).getX(), (int)balls.get(0).getY(), this);
+				g2.drawImage(cue, (int)(balls.get(0).getX() + (mag * Math.cos(theta))), (int)(balls.get(0).getY() + (mag * Math.sin(theta))), this);
 			}
 		} // painting method
 }
