@@ -6,12 +6,12 @@ import java.awt.event.*;
 import java.awt.*;
  
 public class Pool extends JPanel{
-	Image poolTable;
-	Image redball;
-	Image blueball;
-	Image whiteball;
-	Image blackball;
-	Image cue;
+	private Image poolTable;
+	private Image redball;
+	private Image blueball;
+	private Image whiteball;
+	private Image blackball;
+	private Image cue;
 	private static ImageIcon icon;
 	private static KeyStroke escapeKeyStroke = KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0, false);
 	private static boolean close;
