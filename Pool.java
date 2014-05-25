@@ -129,30 +129,30 @@ public class Pool extends JPanel{
 		}
 	} // end of MouseListener
 	
-		public void paintComponent(Graphics g) {
-			super.paintComponent(g);
-			Graphics2D g2 = (Graphics2D) g;
-			setBackground(Color.BLACK);
+	public void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		Graphics2D g2 = (Graphics2D) g;
+		setBackground(Color.BLACK);
+		
+		g2.drawImage(poolTable, 182, 163, this); //pool table dimensions 636 x 373
+		
+		g2.drawImage(whiteball, (int)balls.get(0).getX(), (int)balls.get(0).getY(), this);
+		for (int i = 1; i < balls.size(); i++) {
+			if (i == 5)
+				g2.drawImage(blackball, (int)balls.get(i).getX(), (int)balls.get(i).getY(), this);
+			else if (i % 2 == 0)
+				g2.drawImage(redball, (int)balls.get(i).getX(), (int)balls.get(i).getY(), this);
+			else
+				g2.drawImage(blueball, (int)balls.get(i).getX(), (int)balls.get(i).getY(), this);
+		}
 			
-			g2.drawImage(poolTable, 182, 163, this); //pool table dimensions 636 x 373
-			
-			g2.drawImage(whiteball, (int)balls.get(0).getX(), (int)balls.get(0).getY(), this);
-			for (int i = 1; i < balls.size(); i++) {
-				if (i == 5)
-					g2.drawImage(blackball, (int)balls.get(i).getX(), (int)balls.get(i).getY(), this);
-				else if (i % 2 == 0)
-					g2.drawImage(redball, (int)balls.get(i).getX(), (int)balls.get(i).getY(), this);
-				else
-					g2.drawImage(blueball, (int)balls.get(i).getX(), (int)balls.get(i).getY(), this);
-			}
-			
-			//paint the cue
-			if (aboutToShoot) {
-				int dx = cueX - (int)balls.get(0).getX() + 12;
-				int dy = cueY - (int)balls.get(0).getY() + 12;
-				int theta = (int)Math.toDegrees(Math.atan2(dy, dx)) + 180;
-				g2.rotate(Math.toRadians((170 + theta) % 360), cueX, cueY);
-				g2.drawImage(cue, (int)balls.get(0).getX(), (int)balls.get(0).getY(), this);
-			}
-		} // painting method
+		//paint the cue
+		if (aboutToShoot) {
+			int dx = cueX - (int)balls.get(0).getX() + 12;
+			int dy = cueY - (int)balls.get(0).getY() + 12;
+			int theta = (int)Math.toDegrees(Math.atan2(dy, dx)) + 180;
+			g2.rotate(Math.toRadians((170 + theta) % 360), cueX, cueY);
+			g2.drawImage(cue, (int)balls.get(0).getX(), (int)balls.get(0).getY(), this);
+		}
+	} // painting method
 }
