@@ -41,7 +41,7 @@ public class Physics {
 		double dyy = Math.abs( A.getY() - B.getY() );
 		
 		double contactAngle = Math.atan2(dyy, dxx);
-		//System.out.println(contactAngle);
+		if (contactAngle < 0) contactAngle += 180;
 		
 		double theta = Math.atan2(dy, dx);
 		//calculate A ball final X velocities
@@ -51,7 +51,6 @@ public class Physics {
 		
 		double newBx = Avel * Math.cos(Atheta - contactAngle) * Math.cos(contactAngle) + Bvel * Math.sin(Btheta - contactAngle) * Math.cos(contactAngle + 45);
 		double newBy = Avel * Math.cos(Atheta - contactAngle) * Math.sin(contactAngle) + Bvel * Math.sin(Btheta - contactAngle) * Math.sin(contactAngle + 45);
-		//System.out.println(newAx + "  " + newAy + "      " + newBx + "  " + newBy + "\n");
 		
 		A.setXvel( - newAx);
 		A.setYvel( - newAy);
