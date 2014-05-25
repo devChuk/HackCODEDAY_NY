@@ -27,9 +27,10 @@ public class Pool extends JPanel{
 		//add balls
 			//add cueball
 		CueBall cueball = new CueBall(300, 400);
-		//cueball.setXvel(5.0);
-		//cueball.setYvel(0);
+		cueball.setXvel(5.0);
 		balls.add(cueball);
+		Ball anotherball = new Ball(1, 500, 380);
+		balls.add(anotherball);
 	}
 	
 	public static void main(String[] args) {
@@ -50,7 +51,7 @@ public class Pool extends JPanel{
 				balls.get(i).move();
 				//System.out.println(balls.get(i).getX() + "     " + balls.get(i).getY());
 			}
-			/*
+			
 			for (int i = 0; i < balls.size(); i++) {
 				for (int j = i; j < balls.size(); j++) {
 					if (phys.willItCollide(balls.get(i), balls.get(j))) {
@@ -58,7 +59,6 @@ public class Pool extends JPanel{
 					}
 				}
 			}
-			*/
 			
 			try {
 				Thread.sleep(20);

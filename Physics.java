@@ -6,8 +6,8 @@ public class Physics {
 	private final int BALL_SIZE = 30;
 
 	public boolean willItCollide(Ball a, Ball b) {
-		double dx = Math.abs( a.getX() - a.getY() );
-		double dy = Math.abs( a.getY() - a.getY() );
+		double dx = Math.abs( a.getX() - b.getX() );
+		double dy = Math.abs( a.getY() - b.getY() );
 		
 		if (Math.sqrt(dx * dx + dy * dy) < BALL_SIZE) return true;
 		return false;

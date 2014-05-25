@@ -15,7 +15,7 @@ public class Ball {
 	public Ball(int ballNumber, int x, int y) {
 		setX((double)x);
 		setY((double)y);
-		setXvel(5);
+		setXvel(0);
 		setYvel(0);
 		setHidden(false);
 		this.ballNumber = ballNumber;
