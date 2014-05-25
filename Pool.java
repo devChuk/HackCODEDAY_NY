@@ -95,6 +95,7 @@ public class Pool extends JPanel{
 		};
 		frame.getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(escapeKeyStroke, "ESCAPE");
 		frame.getRootPane().getActionMap().put("ESCAPE", escapeAction);
+		JOptionPane.showMessageDialog(frame, 	"Welcome to Pool.java, a game created by Brian Chuk & Patrick Tsai. \n Special thanks to Ida Huang and Christina Young. \n -----------------------------------------------------------------CONTROLS----------------------------------------------------------------- \n Use the mouse to aim your cue stick. The stick will aim at the direction of the opposite side of the cue ball. \n Then click again to hit the cue ball. The farther your mouse is from the cue ball, the harder you hit. \n Have fun and thanks for playing!");
 		while (true) {
 			if (close) {
 				JOptionPane.showMessageDialog(frame, "Game over!");
