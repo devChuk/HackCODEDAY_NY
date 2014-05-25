@@ -121,6 +121,11 @@ public class Pool extends JPanel{
 				balls.get(i).move();
 				//System.out.println(balls.get(i).getX() + "     " + balls.get(i).getY());
 			}
+
+			//check if 8ball is in.
+			for (int i = 0; i < balls.size(); i++){
+				if ()
+			}
 			
 			try {
 				Thread.sleep(20);
