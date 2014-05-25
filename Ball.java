@@ -13,7 +13,13 @@ public class Ball {
 	private int ballNumber;
 	private int color; //1:blue,2:red,3:black
 	
+<<<<<<< HEAD
 	public Ball(int ballNumber, int x, int y, int colour) {
+=======
+	private final int MaxV = 10;
+	
+	public Ball(int ballNumber, int x, int y) {
+>>>>>>> c60de1a707f4005e3f40af44b1d967c4b1a44c43
 		setX((double)x);
 		setY((double)y);
 		setXvel(0);
@@ -45,10 +51,12 @@ public class Ball {
 		return yVel;
 	}
 	public void setXvel(double v) {
-		xVel = v;
+		if (v < MaxV) xVel = v;
+		else xVel = MaxV;
 	}
 	public void setYvel(double v) {
-		yVel = v;
+		if (v < MaxV) yVel = v;
+		else xVel = MaxV;
 	}
 	public void move() {
 		x += xVel;

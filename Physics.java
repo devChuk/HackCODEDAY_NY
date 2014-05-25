@@ -40,8 +40,8 @@ public class Physics {
 	
 	public void checkOutOfBounds(ArrayList<Ball> balls) {
 		for (int i = 0; i < balls.size(); i++) {
-			if (balls.get(i).getX() < 210 || balls.get(i).getY() > 504 - (BALL_SIZE) || 
-				balls.get(i).getX() > 798 - (BALL_SIZE) || balls.get(i).getY() < 194) {
+			if (balls.get(i).getX() < 205 || balls.get(i).getY() > 509 - (BALL_SIZE) || 
+				balls.get(i).getX() > 803 - (BALL_SIZE) || balls.get(i).getY() < 189) {
 					if (i != 0) {
 						balls.remove(i);
 						i--;

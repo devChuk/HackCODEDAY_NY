@@ -1,7 +1,7 @@
 //class CueBall
 
 public class CueBall extends Ball {
-
+	private final int MaxV = 10;
 	private int direction;
 	
 	public CueBall(int x, int y) {
@@ -9,16 +9,10 @@ public class CueBall extends Ball {
 	}
 
 	public void shoot(int vX, int vY) {
-		if (vX > 10) {
-			setXvel(10.0);	
-		}
-		else
-			setXvel((double)vX);
-		if (vY > 10) {
-			setYvel(10.0);	
-		}
-		else
-			setYvel((double)vY);
+		if (vX < MaxV) setXvel((double)vX);
+		else setXvel(MaxV);
+		if (vY < MaxV) setYvel((double)vY);
+		else setYvel(MaxV);
 	}
  
     public void setDirection(int dir){
