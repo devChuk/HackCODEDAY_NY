@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class Physics {
 	private final int BALL_SIZE = 25;
+	private final int friction = 3;
 
 	public boolean willItCollide(Ball a, Ball b) {
 		double dx = Math.abs( a.getX() - b.getX() );
@@ -62,11 +63,11 @@ public class Physics {
 		double theta = Math.atan2(dy, dx);
 		//calculate A ball final X velocities
 
-		double newAx = Bvel * Math.cos(Btheta - contactAngle) * Math.cos(contactAngle) + Avel * Math.sin(Atheta - contactAngle) * Math.cos(contactAngle + 45);
-		double newAy = Bvel * Math.cos(Btheta - contactAngle) * Math.sin(contactAngle) + Avel * Math.sin(Atheta - contactAngle) * Math.sin(contactAngle + 45);
+		double newAx = Bvel * Math.cos(Btheta - contactAngle) * Math.cos(contactAngle) + Avel * Math.sin(Atheta - contactAngle) * Math.cos(contactAngle + 45) - friction;
+		double newAy = Bvel * Math.cos(Btheta - contactAngle) * Math.sin(contactAngle) + Avel * Math.sin(Atheta - contactAngle) * Math.sin(contactAngle + 45) - friction;
 		
-		double newBx = Avel * Math.cos(Atheta - contactAngle) * Math.cos(contactAngle) + Bvel * Math.sin(Btheta - contactAngle) * Math.cos(contactAngle + 45);
-		double newBy = Avel * Math.cos(Atheta - contactAngle) * Math.sin(contactAngle) + Bvel * Math.sin(Btheta - contactAngle) * Math.sin(contactAngle + 45);
+		double newBx = Avel * Math.cos(Atheta - contactAngle) * Math.cos(contactAngle) + Bvel * Math.sin(Btheta - contactAngle) * Math.cos(contactAngle + 45) - friction;
+		double newBy = Avel * Math.cos(Atheta - contactAngle) * Math.sin(contactAngle) + Bvel * Math.sin(Btheta - contactAngle) * Math.sin(contactAngle + 45) - friction;
 		
 		A.setXvel(-newAx);
 		A.setYvel(newAy);

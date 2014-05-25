@@ -31,13 +31,13 @@ public class Pool extends JPanel{
 		//add balls
 			//add cueball
 		CueBall cueball = new CueBall(300, 400);
-		//cueball.setXvel(5.0);
+		cueball.setXvel(5.0);
 		balls.add(cueball);
 		
 		int ballCounter = 1;
 		for (int i = 1; i <= 5; i++) { // 5 layers
 			for (int j = 1; j <= i; j++) {
-				Ball newBall = new Ball(ballCounter, 600 + (i * 23), 350 - (12 * (i - 1)) + (24 * (j - 1)));
+				Ball newBall = new Ball(ballCounter, 600 + (i * 27), 350 - (14 * (i - 1)) + (28 * (j - 1)));
 				ballCounter++;
 				balls.add(newBall);
 			}
