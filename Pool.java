@@ -78,6 +78,7 @@ public class Pool extends JPanel{
 		while (true) {
 			if (close) {
 				frame.dispose();
+				System.exit(0);
 			}
 			c.repaint();
 			
@@ -108,7 +109,7 @@ public class Pool extends JPanel{
 	
 	class MouseListener extends MouseAdapter {
 		public void mouseClicked(MouseEvent e) {
-			System.out.println(e.getX() + "  " + e.getY());
+			//System.out.println(e.getX() + "  " + e.getY());
 			if (!aboutToShoot) {
 				aboutToShoot = true;
 				cueX = e.getX();
@@ -147,11 +148,11 @@ public class Pool extends JPanel{
 			
 			//paint the cue
 			if (aboutToShoot) {
-				int dx = (int)balls.get(0).getX() + 15 - cueX;
-				int dy = (int)balls.get(0).getY() + 15 - cueY;
+				int dx = cueX - (int)balls.get(0).getX() + 12;
+				int dy = cueY - (int)balls.get(0).getY() + 12;
 				int theta = (int)Math.toDegrees(Math.atan2(dy, dx)) + 180;
-				g2.rotate(Math.toRadians((142 + theta) % 360), cueX, cueY);
-				g2.drawImage(cue, (int)balls.get(0).getX() + 15, (int)balls.get(0).getY() + 15, this);
+				g2.rotate(Math.toRadians((170 + theta) % 360), cueX, cueY);
+				g2.drawImage(cue, (int)balls.get(0).getX(), (int)balls.get(0).getY(), this);
 			}
 		} // painting method
 }
