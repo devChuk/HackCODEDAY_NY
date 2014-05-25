@@ -201,12 +201,12 @@ public class Pool extends JPanel{
 		g2.drawImage(poolTable, 182, 163, this); //pool table dimensions 636 x 373
 		g2.drawString("POOL", 485, 25);
 		g2.drawString("Player " + Integer.toString(turn) +", it's your turn.", 440, 50);
-		if (team1 == 1) && !lock
+		if ((team1 == 1) && !lock) {
 			g2.drawString("Player 1, you are blue. Player 2, you are red.", 430, 75);
-			lock = true;
-		else if (team1 == 2)
+			lock = true;}
+		else if (team1 == 2){
 			g2.drawString("Player 1, you are red. Player 2, you are blue.", 430, 75);
-			lock = true;
+			lock = true;}
 		else
 			g2.drawString("Table is now open", 440, 75);
 		g2.drawImage(whiteball, (int)balls.get(0).getX(), (int)balls.get(0).getY(), this);
