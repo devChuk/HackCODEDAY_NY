@@ -97,6 +97,7 @@ public class Pool extends JPanel{
 		frame.getRootPane().getActionMap().put("ESCAPE", escapeAction);
 		while (true) {
 			if (close) {
+				JOptionPane.showMessageDialog(frame, "Game over!");
 				frame.dispose();
 				System.exit(0);
 			}
