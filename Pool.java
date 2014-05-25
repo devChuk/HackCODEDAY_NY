@@ -26,6 +26,7 @@ public class Pool extends JPanel{
 	//Game mechanics variables
 	private static int turn; //1 is player 1, 2 is player 2.
 	private static int team1; //if 1, p1 is blue. if 2, p2 is blue.
+	private static boolean lock = false;
 	public Pool() {
 		Toolkit tkit = Toolkit.getDefaultToolkit();
 		poolTable = tkit.getImage(Pool.class.getResource("data/PoolTable.png"));
@@ -199,10 +200,12 @@ public class Pool extends JPanel{
 		g2.drawImage(poolTable, 182, 163, this); //pool table dimensions 636 x 373
 		g2.drawString("POOL", 485, 25);
 		g2.drawString("Player " + Integer.toString(turn) +", it's your turn.", 440, 50);
-		if (team1 == 1) 
+		if (team1 == 1) && !lock
 			g2.drawString("Player 1, you are blue. Player 2, you are red.", 430, 75);
+			lock = true;
 		else if (team1 == 2)
 			g2.drawString("Player 1, you are red. Player 2, you are blue.", 430, 75);
+			lock = true;
 		else
 			g2.drawString("Table is now open", 440, 75);
 		g2.drawImage(whiteball, (int)balls.get(0).getX(), (int)balls.get(0).getY(), this);
