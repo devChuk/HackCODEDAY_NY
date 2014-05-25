@@ -46,18 +46,20 @@ public class Pool extends JPanel{
 		frame.setVisible(true);
 		while (true) {
 			c.repaint();
-			//move the balls
-			for (int i = 0; i < balls.size(); i++) {
-				balls.get(i).move();
-				//System.out.println(balls.get(i).getX() + "     " + balls.get(i).getY());
-			}
 			
+			//check for stuff
 			for (int i = 0; i < balls.size(); i++) {
 				for (int j = i; j < balls.size(); j++) {
 					if (phys.willItCollide(balls.get(i), balls.get(j))) {
 						phys.calcFinalVelocity(balls.get(i), balls.get(j));
 					}
 				}
+			}
+			
+			//move the balls
+			for (int i = 0; i < balls.size(); i++) {
+				balls.get(i).move();
+				//System.out.println(balls.get(i).getX() + "     " + balls.get(i).getY());
 			}
 			
 			try {

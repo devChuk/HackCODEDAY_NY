@@ -6,16 +6,19 @@ public class Physics {
 	private final int BALL_SIZE = 25;
 
 	public boolean willItCollide(Ball a, Ball b) {
-		//Find 
 		double dx = Math.abs( a.getX() - b.getX() );
 		double dy = Math.abs( a.getY() - b.getY() );
+		//System.out.println(Math.sqrt(dx * dx + dy * dy));
 		
-		if (Math.sqrt(dx * dx + dy * dy) < BALL_SIZE) return true;
+		if (Math.sqrt(dx * dx + dy * dy) < BALL_SIZE && Math.sqrt(dx * dx + dy * dy) != 0) {
+			System.out.println("hit!");
+			return true;
+		}
 		return false;
 	}
 	
 	public boolean willWallCollide(Wall wall, Ball ball) {
-		
+		return false;
 	}
 
 	/*  ~~~~~~   Elastic collision calculator   ~~~~~  */
@@ -48,11 +51,12 @@ public class Physics {
 		
 		double newBx = Avel * Math.cos(Atheta - contactAngle) * Math.cos(contactAngle) + Bvel * Math.sin(Btheta - contactAngle) * Math.cos(contactAngle + 45);
 		double newBy = Avel * Math.cos(Atheta - contactAngle) * Math.sin(contactAngle) + Bvel * Math.sin(Btheta - contactAngle) * Math.sin(contactAngle + 45);
+		//System.out.println(newAx + "  " + newAy + "      " + newBx + "  " + newBy + "\n");
 		
-		A.setXvel(newAx);
-		A.setYvel(newAy);
+		A.setXvel( - newAx);
+		A.setYvel( - newAy);
 		B.setXvel(newBx);
-		B.setYvel(newBy);
+		B.setYvel( - newBy);
 	}
 	
 }
