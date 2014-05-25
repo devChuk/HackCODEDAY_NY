@@ -10,6 +10,7 @@ public class Pool extends JPanel{
 	Image redball;
 	Image blueball;
 	Image whiteball;
+	Image blackball;
 	Image cue;
 	private static KeyStroke escapeKeyStroke = KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0, false);
 	private static boolean close;
@@ -25,6 +26,7 @@ public class Pool extends JPanel{
 		redball = tkit.getImage(Pool.class.getResource("data/red.png"));
 		blueball = tkit.getImage(Pool.class.getResource("data/blue.png"));
 		whiteball = tkit.getImage(Pool.class.getResource("data/white.png"));
+		blackball = tkit.getImage(Pool.class.getResource("data/black.png"));
 		cue = tkit.getImage(Pool.class.getResource("data/cue.png"));
 		addMouseListener(new MouseListener());
 		initialBallSetup();
@@ -128,17 +130,22 @@ public class Pool extends JPanel{
 		}
 	} // end of MouseListener
 	
-		public void paintComponent(Graphics g) {
-			super.paintComponent(g);
-			Graphics2D g2 = (Graphics2D) g;
-			setBackground(Color.BLACK);
-			
-			g2.drawImage(poolTable, 182, 163, this); //pool table dimensions 636 x 373
-			
-			g2.drawImage(whiteball, (int)balls.get(0).getX(), (int)balls.get(0).getY(), this);
-			for (int i = 1; i < balls.size(); i++) {
+	public void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		Graphics2D g2 = (Graphics2D) g;
+		setBackground(Color.BLACK);
+		
+		g2.drawImage(poolTable, 182, 163, this); //pool table dimensions 636 x 373
+		
+		g2.drawImage(whiteball, (int)balls.get(0).getX(), (int)balls.get(0).getY(), this);
+		for (int i = 1; i < balls.size(); i++) {
+			if (i == 5)
+				g2.drawImage(blackball, (int)balls.get(i).getX(), (int)balls.get(i).getY(), this);
+			else if (i % 2 == 0)
 				g2.drawImage(redball, (int)balls.get(i).getX(), (int)balls.get(i).getY(), this);
-			}
+			else
+				g2.drawImage(blueball, (int)balls.get(i).getX(), (int)balls.get(i).getY(), this);
+		}
 			
 			//paint the cue
 			if (aboutToShoot) {
