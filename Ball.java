@@ -82,7 +82,7 @@ public class Ball {
 	public void setBallNumber(int number) {ballNumber = number;}
 	public void shoot(int dx, int dy) {}
 	public void setCooldown() {
-		cooldown = 3;
+		cooldown = 8;
 	}
 	public int getandReduceCooldown() {
 		if (cooldown > 0) cooldown --;

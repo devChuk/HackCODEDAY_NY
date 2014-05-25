@@ -91,7 +91,7 @@ public class Physics {
 		A.setYvel(newAy);
 		
 		
-		if ((contactAngle * 180 / Math.PI) < 90) {
+		if ((contactAngle * 180 / Math.PI) < 110) {
 			B.setXvel(newBx);
 			B.setYvel(newBy);
 		}
