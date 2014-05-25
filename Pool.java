@@ -4,13 +4,15 @@ import java.net.*;
 import java.util.*;
 import java.awt.event.*;
 import java.awt.*;
-
+ 
 public class Pool extends JPanel{
 	Image poolTable;
 	Image redball;
 	Image blueball;
 	Image whiteball;
 	Image cue;
+	private static KeyStroke escapeKeyStroke = KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0, false);
+	private static boolean close;
 	private static ArrayList<Ball> balls = new ArrayList<Ball>();
 	private int winner = 0; //0 when nobody has won yet; 1 if player 1 wins, 2 if player 2 wins.
 	private boolean aboutToShoot;
@@ -63,7 +65,18 @@ public class Pool extends JPanel{
 		Container c = frame.getContentPane();
 		c.add(p);
 		frame.setVisible(true);
+		Action escapeAction = new AbstractAction() {
+    		// close the frame when the user presses escape
+    		public void actionPerformed(ActionEvent e) {
+    			close = true;
+    		}
+		};
+		frame.getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(escapeKeyStroke, "ESCAPE");
+		frame.getRootPane().getActionMap().put("ESCAPE", escapeAction);
 		while (true) {
+			if (close) {
+				frame.dispose();
+			}
 			c.repaint();
 			
 			//check for stuff
