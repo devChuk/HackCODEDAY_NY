@@ -29,10 +29,12 @@ public class Pool extends JPanel{
 		CueBall cueball = new CueBall(300, 400);
 		cueball.setXvel(5.0);
 		balls.add(cueball);
-		Ball anotherball = new Ball(1, 500, 405);
+		Ball anotherball = new Ball(1, 500, 395);
 		balls.add(anotherball);
 		Ball athirdball = new Ball(1, 600, 360);
 		balls.add(athirdball);
+		Ball fourthball = new Ball(1, 300, 300);
+		balls.add(fourthball);
 	}
 	
 	public static void main(String[] args) {
@@ -57,6 +59,10 @@ public class Pool extends JPanel{
 					}
 				}
 			}
+			//check walls
+			for (int i = 0; i < balls.size(); i++) {
+				phys.checkWalls(balls.get(i));
+			}
 			
 			//move the balls
 			for (int i = 0; i < balls.size(); i++) {
@@ -72,6 +78,7 @@ public class Pool extends JPanel{
 	
 	class MouseListener extends MouseAdapter {
 		public void mouseClicked(MouseEvent e) {
+			System.out.println(e.getX() + "  " + e.getY());
 			if (!aboutToShoot) {
 				aboutToShoot = true;
 				cueX = e.getX();

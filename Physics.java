@@ -11,15 +11,37 @@ public class Physics {
 		//System.out.println(Math.sqrt(dx * dx + dy * dy));
 		
 		if (Math.sqrt(dx * dx + dy * dy) < BALL_SIZE && Math.sqrt(dx * dx + dy * dy) != 0) {
-			System.out.println("hit!");
+			//System.out.println("hit!");
 			return true;
 		}
+		
 		return false;
 	}
 	
+	public void checkWalls(Ball a) {
+		//check walls
+			//left wall - X = 214, Y = 223, 476
+			//right wall  X = 794
+			//top wall - Y = 198, X = 237 474, 526 765
+			//bottom wall    500
+		int x = (int)a.getX();
+		int y = (int)a.getY();
+			//left + right
+		if (x < 214 && y > 223 && y < 476) a.setXvel(-a.getXvel());
+		if (x > 794 - (BALL_SIZE) && y > 223 && y < 476) a.setXvel(-a.getXvel());
+			//top wall
+		if (y < 198 && x > 237 && x < 474) a.setYvel(-a.getYvel());
+		if (y < 198 && x > 526 && x < 765) a.setYvel(-a.getYvel());
+			//bottom wall
+		if (y > 500 - (BALL_SIZE) && x > 237 && x < 474) a.setYvel(-a.getYvel());
+		if (y > 500 - (BALL_SIZE) && x > 526 && x < 765) a.setYvel(-a.getYvel());
+	}
+	
+	/*
 	public boolean willWallCollide(Wall wall, Ball ball) {
 		return false;
 	}
+	*/
 
 	/*  ~~~~~~   Elastic collision calculator   ~~~~~  */
 	public void calcFinalVelocity(Ball A, Ball B) {
@@ -41,6 +63,7 @@ public class Physics {
 		double dyy = A.getY() - B.getY();
 		
 		double contactAngle = Math.atan2(dyy, dxx);
+		System.out.println(contactAngle * 180 / Math.PI);
 		
 		double theta = Math.atan2(dy, dx);
 		//calculate A ball final X velocities
@@ -53,6 +76,7 @@ public class Physics {
 		
 		A.setXvel(-newAx);
 		A.setYvel(newAy);
+		//if (contactAngle * 180 / Math.PI > 90) B.setXvel(newBx);
 		B.setXvel(newBx);
 		B.setYvel(newBy);
 	}
