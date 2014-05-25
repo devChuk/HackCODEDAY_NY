@@ -29,7 +29,7 @@ public class Pool extends JPanel{
 		CueBall cueball = new CueBall(300, 400);
 		cueball.setXvel(5.0);
 		balls.add(cueball);
-		Ball anotherball = new Ball(1, 500, 380);
+		Ball anotherball = new Ball(1, 500, 375);
 		balls.add(anotherball);
 	}
 	
@@ -81,7 +81,7 @@ public class Pool extends JPanel{
 				int dx = cueX - x;
 				int dy = cueY - y;
 				int multiplier = 10;
-				balls.get(0).shoot(dx * multiplier, dy * multiplier);
+				//balls.get(0).shoot(dx * multiplier, dy * multiplier);
 				aboutToShoot = false;
 			}
 		}
@@ -100,7 +100,11 @@ public class Pool extends JPanel{
 			
 			//paint the cue
 			if (aboutToShoot) {
-				g2.drawImage(cue, cueX, cueY, this);
+				int dx = (int)balls.get(0).getX() - cueX;
+				int dy = (int)balls.get(0).getY() - cueY;
+				int theta = (int)Math.toDegrees(Math.atan2(dy, dx));
+				g2.rotate(Math.toRadians(142 + theta), cueX, cueY);
+				g2.drawImage(cue, (int)balls.get(0).getX(), (int)balls.get(0).getY(), this);
 			}
 		} // painting method
 }
