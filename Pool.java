@@ -222,7 +222,7 @@ public class Pool extends JPanel{
 			int dy = rawY - ((int)balls.get(0).getY() + 12); 	//vector from cue to bally
 			double theta = Math.atan2(dy, dx);					//angle of stick
 			if (theta < 0) theta += 2 * Math.PI;				//some math thing I'm too lazy to understand for now
-			//System.out.println(theta);
+			System.out.println(theta);
 			
 			int mouseX = (int)MouseInfo.getPointerInfo().getLocation().getX();
 			int mouseY = (int)MouseInfo.getPointerInfo().getLocation().getY();
@@ -234,7 +234,7 @@ public class Pool extends JPanel{
 			g2.rotate(theta);
 			int stickx = 15;
 			int sticky = -6;
-			g2.drawImage(cue, stickx - (int)(shootMagnitude * Math.cos(theta)) - 12, sticky - (int)(shootMagnitude * Math.sin(theta)) - 12, this);
+			g2.drawImage(cue, stickx - (int)(shootMagnitude * Math.cos(theta)), sticky - (int)(shootMagnitude * Math.sin(theta)) - 12, this);
 		}
 	} // painting method
 }
