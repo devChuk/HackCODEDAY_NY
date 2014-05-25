@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class Physics {
 	private final int BALL_SIZE = 25;
 	private final int friction = 3;
+	private boolean open = true;
 
 	public boolean willItCollide(Ball a, Ball b) {
 		double dx = Math.abs( a.getX() - b.getX() );
@@ -38,6 +39,11 @@ public class Physics {
 		if (y > 500 - (BALL_SIZE) && x > 526 && x < 765) a.setYvel(-a.getYvel());
 	}
 	
+
+	public boolean getOpen() {
+		return open;
+	}
+	
 	public void checkOutOfBounds(ArrayList<Ball> balls) {
 		for (int i = 0; i < balls.size(); i++) {
 			if (balls.get(i).getX() < 205 || balls.get(i).getY() > 509 - (BALL_SIZE) || 
@@ -45,6 +51,7 @@ public class Physics {
 					if (i != 0) {
 						balls.remove(i);
 						i--;
+						open = false;
 					}
 					if (i == 0) {
 						balls.get(0).setX(300);

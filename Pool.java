@@ -23,7 +23,9 @@ public class Pool extends JPanel{
 	int ddddx = cueX - rawX;
 	int ddddy = cueY - rawY;
 	double multiplier = 0.1;
-	String _2bit;
+	//Game mechanics variables
+	private int turn; //1 is player 1, 2 is player 2.
+	private int team1; //if 1, p1 is blue. if 2, p2 is blue.
 	public Pool() {
 		Toolkit tkit = Toolkit.getDefaultToolkit();
 		poolTable = tkit.getImage(Pool.class.getResource("data/PoolTable.png"));
@@ -33,6 +35,7 @@ public class Pool extends JPanel{
 		blackball = tkit.getImage(Pool.class.getResource("data/black.png"));
 		cue = tkit.getImage(Pool.class.getResource("data/cue.png"));
 		icon = new ImageIcon("data/icon.png");
+		turn = 1;
 		addMouseListener(new MouseListener());
 		initialBallSetup();
 	}
@@ -169,6 +172,10 @@ public class Pool extends JPanel{
 				ddddy = cueY - rawY;				//yvect from cue to mouse
 				balls.get(0).shoot((int)(ddddx * multiplier), (int)(ddddy * multiplier)); //inserts xvect and yvect into power
 				aboutToShoot = false;				//turns off shooting function
+				if (turn == 1)
+					turn = 2;
+				else
+					turn = 1;
 			}
 		}
 	} // end of MouseListener	
@@ -178,7 +185,8 @@ public class Pool extends JPanel{
 		setBackground(Color.BLACK);
 		
 		g2.drawImage(poolTable, 182, 163, this); //pool table dimensions 636 x 373
-		
+		g2.drawString("POOL", 485, 25);
+		g2.drawString("Player " + Integer.toString(turn) +", it's your turn.", 440, 50);
 		g2.drawImage(whiteball, (int)balls.get(0).getX(), (int)balls.get(0).getY(), this);
 
 		for (int i = 1; i < balls.size(); i++) {
