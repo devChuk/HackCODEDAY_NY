@@ -17,6 +17,7 @@ public class Pool extends JPanel{
 	private int winner = 0; //0 when nobody has won yet; 1 if player 1 wins, 2 if player 2 wins.
 	private boolean aboutToShoot;
 	private int cueX, cueY;
+	private int rawX, rawY;
 	
 	public Pool() {
 		Toolkit tkit = Toolkit.getDefaultToolkit();
@@ -114,12 +115,12 @@ public class Pool extends JPanel{
 				cueY = e.getY();
 			}
 			else if (aboutToShoot) {
-				int x = e.getX();
-				int y = e.getY();
+				int rawX = e.getX();
+				int fawY = e.getY();
 				int cueX = (int)balls.get(0).getX();
 				int cueY = (int)balls.get(0).getY();
-				int dx = cueX - x;
-				int dy = cueY - y;
+				int dx = cueX - rawX;
+				int dy = cueY - rawY;
 				double multiplier = 0.1;
 				balls.get(0).shoot((int)(dx * multiplier), (int)(dy * multiplier));
 				aboutToShoot = false;
@@ -141,10 +142,16 @@ public class Pool extends JPanel{
 			
 			//paint the cue
 			if (aboutToShoot) {
-				int dx = cueX - (int)balls.get(0).getX() + 12;
-				int dy = cueY - (int)balls.get(0).getY() + 12;
-				int theta = (int)Math.toDegrees(Math.atan2(dy, dx)) + 180;
-				g2.rotate(Math.toRadians((170 + theta) % 360), cueX, cueY);
+				int dx = cueX - (int)balls.get(0).getX() - 12;
+				int dy = cueY - (int)balls.get(0).getY() - 12;
+				int theta = (int)Math.toDegrees(Math.atan2(dy, dx));
+				if (theta < 0) theta += 360;
+				
+				int magX = rawX - (int)balls.get(0).getX();
+				int magY = rawY - (int)balls.get(0).getY();
+				
+				System.out.println(theta);
+				g2.rotate(Math.toRadians(-38 + theta), cueX, cueY);
 				g2.drawImage(cue, (int)balls.get(0).getX(), (int)balls.get(0).getY(), this);
 			}
 		} // painting method
