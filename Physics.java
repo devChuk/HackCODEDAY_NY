@@ -6,6 +6,7 @@ public class Physics {
 	private final int BALL_SIZE = 25;
 	private final int friction = 3;
 	private boolean open = true;
+	private int first = 1; //1 is blue
 
 	public boolean willItCollide(Ball a, Ball b) {
 		double dx = Math.abs( a.getX() - b.getX() );
@@ -43,15 +44,18 @@ public class Physics {
 	public boolean getOpen() {
 		return open;
 	}
-	
+
 	public void checkOutOfBounds(ArrayList<Ball> balls) {
 		for (int i = 0; i < balls.size(); i++) {
 			if (balls.get(i).getX() < 205 || balls.get(i).getY() > 509 - (BALL_SIZE) || 
 				balls.get(i).getX() > 803 - (BALL_SIZE) || balls.get(i).getY() < 189) {
-					if (i != 0) {
+					if (i != 0) { 
 						balls.remove(i);
 						i--;
-						open = false;
+						if (open) {
+							first = balls.get(i).getColor();
+							open = false;
+						}
 					}
 					if (i == 0) {
 						balls.get(0).setX(300);
