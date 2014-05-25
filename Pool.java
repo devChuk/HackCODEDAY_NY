@@ -100,11 +100,11 @@ public class Pool extends JPanel{
 			
 			//paint the cue
 			if (aboutToShoot) {
-				int dx = (int)balls.get(0).getX() - cueX;
-				int dy = (int)balls.get(0).getY() - cueY;
-				int theta = (int)Math.toDegrees(Math.atan2(dy, dx));
-				g2.rotate(Math.toRadians(142 + theta), cueX, cueY);
-				g2.drawImage(cue, (int)balls.get(0).getX(), (int)balls.get(0).getY(), this);
+				int dx = (int)balls.get(0).getX() + 15 - cueX;
+				int dy = (int)balls.get(0).getY() + 15 - cueY;
+				int theta = (int)Math.toDegrees(Math.atan2(dy, dx)) + 180;
+				g2.rotate(Math.toRadians((142 + theta) % 360), cueX, cueY);
+				g2.drawImage(cue, (int)balls.get(0).getX() + 15, (int)balls.get(0).getY() + 15, this);
 			}
 		} // painting method
 }
