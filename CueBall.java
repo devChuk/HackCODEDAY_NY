@@ -5,7 +5,7 @@ public class CueBall extends Ball {
 	private int direction;
 	
 	public CueBall(int x, int y) {
-		super(0, x, y);
+		super(0, x, y, 0);
 	}
 
 	public void shoot(int vX, int vY) {

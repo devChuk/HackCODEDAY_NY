@@ -45,7 +45,7 @@ public class Pool extends JPanel{
 		int ballCounter = 1;
 		for (int i = 1; i <= 5; i++) { // 5 layers
 			for (int j = 1; j <= i; j++) {
-				Ball newBall = new Ball(ballCounter, 600 + (i * 27), 350 - (14 * (i - 1)) + (28 * (j - 1)));
+				Ball newBall = new Ball(ballCounter, 600 + (i * 27), 350 - (14 * (i - 1)) + (28 * (j - 1)), 0);
 				ballCounter++;
 				balls.add(newBall);
 			}
