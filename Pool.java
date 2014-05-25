@@ -24,17 +24,32 @@ public class Pool extends JPanel{
 		whiteball = tkit.getImage(Pool.class.getResource("data/white.png"));
 		cue = tkit.getImage(Pool.class.getResource("data/cue.png"));
 		addMouseListener(new MouseListener());
+		initialBallSetup();
+	}
+	
+	public void initialBallSetup() {
 		//add balls
-		//add cueball
+			//add cueball
 		CueBall cueball = new CueBall(300, 400);
-		cueball.setXvel(5.0);
+		//cueball.setXvel(5.0);
 		balls.add(cueball);
-		Ball anotherball = new Ball(1, 500, 395);
-		balls.add(anotherball);
-		Ball athirdball = new Ball(1, 600, 360);
-		balls.add(athirdball);
-		Ball fourthball = new Ball(1, 300, 300);
-		balls.add(fourthball);
+		
+		int ballCounter = 1;
+		for (int i = 1; i <= 5; i++) { // 5 layers
+			for (int j = 1; j <= i; j++) {
+				Ball newBall = new Ball(ballCounter, 600 + (i * 23), 350 - (12 * (i - 1)) + (24 * (j - 1)));
+				ballCounter++;
+				balls.add(newBall);
+			}
+		}
+		/*
+		Ball firstball = new Ball(1, 600, 350);
+		balls.add(firstball);
+		Ball secondball = new Ball(2, 623, 338);
+		balls.add(secondball);
+		Ball thirdball = new Ball(3, 623, 362);
+		balls.add(thirdball);
+		*/
 	}
 	
 	public static void main(String[] args) {
