@@ -19,7 +19,7 @@ public class Ball {
 		setYvel(0);
 		setHidden(false);
 		this.ballNumber = ballNumber;
-		wang = 0.05;
+		wang = 0.03;
 	}
 	public void setX(double hurr) {
 		x = hurr;

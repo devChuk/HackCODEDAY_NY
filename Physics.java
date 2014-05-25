@@ -58,7 +58,7 @@ public class Physics {
 		double dyy = A.getY() - B.getY();
 		
 		double contactAngle = Math.atan2(dyy, dxx);
-		System.out.println(contactAngle * 180 / Math.PI);
+		//System.out.println(contactAngle * 180 / Math.PI);
 		
 		double theta = Math.atan2(dy, dx);
 		//calculate A ball final X velocities
@@ -75,6 +75,7 @@ public class Physics {
 		if ((contactAngle * 180 / Math.PI) < 130) {
 			B.setYvel(-newBy);
 		}
+		
 		else {
 		
 			B.setXvel(newBx);
