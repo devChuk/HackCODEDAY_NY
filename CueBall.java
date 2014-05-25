@@ -9,8 +9,16 @@ public class CueBall extends Ball {
 	}
 
 	public void shoot(int vX, int vY) {
-		setXvel((double)vX);
-		setYvel((double)vY);
+		if (vX > 10) {
+			setXvel(10.0);	
+		}
+		else
+			setXvel((double)vX);
+		if (vY > 10) {
+			setYvel(10.0);	
+		}
+		else
+			setYvel((double)vY);
 	}
  
     public void setDirection(int dir){

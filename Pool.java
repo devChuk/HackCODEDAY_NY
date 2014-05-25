@@ -50,14 +50,6 @@ public class Pool extends JPanel{
 				balls.add(newBall);
 			}
 		}
-		/*
-		Ball firstball = new Ball(1, 600, 350);
-		balls.add(firstball);
-		Ball secondball = new Ball(2, 623, 338);
-		balls.add(secondball);
-		Ball thirdball = new Ball(3, 623, 362);
-		balls.add(thirdball);
-		*/
 	}
 	public static void main(String[] args) {
 		Pool p = new Pool();
