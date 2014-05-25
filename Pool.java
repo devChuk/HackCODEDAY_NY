@@ -23,7 +23,6 @@ public class Pool extends JPanel{
 	int ddddx = cueX - rawX;
 	int ddddy = cueY - rawY;
 	double multiplier = 0.1;
-	
 	public Pool() {
 		Toolkit tkit = Toolkit.getDefaultToolkit();
 		poolTable = tkit.getImage(Pool.class.getResource("data/PoolTable.png"));
@@ -36,7 +35,6 @@ public class Pool extends JPanel{
 		addMouseListener(new MouseListener());
 		initialBallSetup();
 	}
-	
 	public void initialBallSetup() {
 		//add balls
 			//add cueball
@@ -61,7 +59,6 @@ public class Pool extends JPanel{
 		balls.add(thirdball);
 		*/
 	}
-	
 	public static void main(String[] args) {
 		Pool p = new Pool();
 		Physics phys = new Physics();
@@ -115,7 +112,6 @@ public class Pool extends JPanel{
 			} catch (InterruptedException e) {}
 		}
 	}
-	
 	class MouseListener extends MouseAdapter {
 		public void mouseClicked(MouseEvent e) {
 			//System.out.println(e.getX() + "  " + e.getY());
@@ -135,8 +131,7 @@ public class Pool extends JPanel{
 				aboutToShoot = false;
 			}
 		}
-	} // end of MouseListener
-	
+	} // end of MouseListener	
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		Graphics2D g2 = (Graphics2D) g;
