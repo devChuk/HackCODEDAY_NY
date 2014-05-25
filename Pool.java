@@ -25,7 +25,7 @@ public class Pool extends JPanel{
 		cue = tkit.getImage(Pool.class.getResource("data/cue.png"));
 		addMouseListener(new MouseListener());
 		//add balls
-			//add cueball
+		//add cueball
 		CueBall cueball = new CueBall(300, 400);
 		cueball.setXvel(5.0);
 		balls.add(cueball);
@@ -92,7 +92,7 @@ public class Pool extends JPanel{
 			Graphics2D g2 = (Graphics2D) g;
 			setBackground(Color.BLACK);
 			
-			g2.drawImage(poolTable, 173, 155, this); //pool table dimensions 653 x 390
+			g2.drawImage(poolTable, 182, 163, this); //pool table dimensions 636 x 373
 			
 			for (int i = 0; i < balls.size(); i++) {
 				g2.drawImage(redball, (int)balls.get(i).getX(), (int)balls.get(i).getY(), this);
