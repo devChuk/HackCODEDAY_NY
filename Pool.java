@@ -10,6 +10,7 @@ public class Pool extends JPanel{
 	Image redball;
 	Image blueball;
 	Image whiteball;
+	Image blackball;
 	Image cue;
 	private static KeyStroke escapeKeyStroke = KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0, false);
 	private static boolean close;
@@ -24,6 +25,7 @@ public class Pool extends JPanel{
 		redball = tkit.getImage(Pool.class.getResource("data/red.png"));
 		blueball = tkit.getImage(Pool.class.getResource("data/blue.png"));
 		whiteball = tkit.getImage(Pool.class.getResource("data/white.png"));
+		blackball = tkit.getImage(Pool.class.getResource("data/black.png"));
 		cue = tkit.getImage(Pool.class.getResource("data/cue.png"));
 		addMouseListener(new MouseListener());
 		initialBallSetup();
@@ -135,7 +137,12 @@ public class Pool extends JPanel{
 			
 			g2.drawImage(whiteball, (int)balls.get(0).getX(), (int)balls.get(0).getY(), this);
 			for (int i = 1; i < balls.size(); i++) {
-				g2.drawImage(redball, (int)balls.get(i).getX(), (int)balls.get(i).getY(), this);
+				if (i == 5)
+					g2.drawImage(blackball, (int)balls.get(i).getX(), (int)balls.get(i).getY(), this);
+				else if (i % 2 == 0)
+					g2.drawImage(redball, (int)balls.get(i).getX(), (int)balls.get(i).getY(), this);
+				else
+					g2.drawImage(blueball, (int)balls.get(i).getX(), (int)balls.get(i).getY(), this);
 			}
 			
 			//paint the cue
