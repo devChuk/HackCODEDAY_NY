@@ -15,7 +15,7 @@ public class Ball {
 	public Ball(int ballNumber, int x, int y) {
 		setX((double)x);
 		setY((double)y);
-		setXvel(0);
+		setXvel(5);
 		setYvel(0);
 		setHidden(false);
 		this.ballNumber = ballNumber;
@@ -30,7 +30,7 @@ public class Ball {
 		return x;
 	}
 	public double getY() {
-		return x;
+		return y;
 	}
 	public double getXvel() {
 		return xVel;
@@ -47,6 +47,7 @@ public class Ball {
 	public void move() {
 		x += xVel;
 		y += yVel;
+		slowdown();
 	}
 	public void setHidden(boolean durr) {
 		hidden = durr;
