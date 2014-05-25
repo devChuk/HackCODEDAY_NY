@@ -205,11 +205,18 @@ public class Pool extends JPanel{
 			double theta = Math.atan2(dy, dx);					//angle of stick
 			if (theta < 0) theta += 2 * Math.PI;				//some math thing I'm too lazy to understand for now
 			//System.out.println(theta);
+			
+			int mouseX = (int)MouseInfo.getPointerInfo().getLocation().getX();
+			int mouseY = (int)MouseInfo.getPointerInfo().getLocation().getY();
+			
+			double shootMagnitude = Math.sqrt(Math.pow(mouseX - balls.get(0).getX() - 12, 2) + Math.pow(mouseY - balls.get(0).getY() - 12, 2));
+			
+			
 			g2.translate((int)balls.get(0).getX()+12,(int)balls.get(0).getY()+12);
 			g2.rotate(theta);
 			int stickx = 15;
 			int sticky = -6;
-			g2.drawImage(cue, stickx, sticky, this);
+			g2.drawImage(cue, stickx - (int)(shootMagnitude * Math.cos(theta)) - 12, sticky - (int)(shootMagnitude * Math.sin(theta)) - 12, this);
 		}
 	} // painting method
 }
