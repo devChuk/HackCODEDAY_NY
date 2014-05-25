@@ -13,7 +13,9 @@ public class Ball {
 	private int ballNumber;
 	private int color; //1:blue,2:red,3:black
 	private final int MaxV = 10;
-	protected int cooldown = 0;
+	
+	protected ArrayList<Integer> cooldownBalls = new ArrayList<Integer>();
+	protected ArrayList<Integer> cooldownTimes = new ArrayList<Integer>();
 
 	public Ball(int ballNumber, int x, int y, int colour) {
 		setX((double)x);
@@ -81,14 +83,20 @@ public class Ball {
 	public int getBallNumber() {return ballNumber;}
 	public void setBallNumber(int number) {ballNumber = number;}
 	public void shoot(int dx, int dy) {}
-	public void setCooldown() {
-		cooldown = 8;
+	public void addToCooldown(int ballNumber) {
+		cooldownBalls.add(ballNumber);
+		cooldownTimes.add(8);
 	}
-	public int getandReduceCooldown() {
-		if (cooldown > 0) cooldown --;
-		return cooldown;
+	public void reduceCooldowns() {
+		for (int i = 0; i < cooldownBalls.size(); i++) {
+			if (cooldownTimes.get(i) == 0) {
+				cooldownBalls.remove(0);
+				cooldownTimes.remove(0);
+				i--;
+				continue;
+			}
+			cooldownTimes.set(i, cooldownTimes.get(i) - 1);
+		}
 	}
-	public int getCooldown() {
-		return cooldown;
-	}
+	
 }
