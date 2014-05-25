@@ -149,20 +149,20 @@ public class Pool extends JPanel{
 				g2.drawImage(blueball, (int)balls.get(i).getX(), (int)balls.get(i).getY(), this);
 		}
 			
-			//paint the cue
-			if (aboutToShoot) {
-				int dx = cueX - (int)balls.get(0).getX() - 12;
-				int dy = cueY - (int)balls.get(0).getY() - 12;
-				double theta = Math.atan2(dy, dx);
-				if (theta < 0) theta += 2 * Math.PI;
-				
-				int magX = (int)(rawX - balls.get(0).getX());
-				int magY = (int)(rawY - balls.get(0).getY());
-				double mag = Math.sqrt(magX * magX + magY * magY);
-				
-				//System.out.println(theta);
-				g2.rotate(Math.toRadians(-38 + theta), cueX, cueY);
-				g2.drawImage(cue, (int)(balls.get(0).getX() + (mag * Math.cos(theta))), (int)(balls.get(0).getY() + (mag * Math.sin(theta))), this);
-			}
-		} // painting method
+		//paint the cue
+		if (aboutToShoot) {
+			int dx = cueX - (int)balls.get(0).getX() - 12;
+			int dy = cueY - (int)balls.get(0).getY() - 12;
+			double theta = Math.atan2(dy, dx);
+			if (theta < 0) theta += 2 * Math.PI;
+			
+			int magX = (int)(rawX - balls.get(0).getX());
+			int magY = (int)(rawY - balls.get(0).getY());
+			double mag = Math.sqrt(magX * magX + magY * magY);
+			
+			//System.out.println(theta);
+			g2.rotate(Math.toRadians(-38 + theta), cueX, cueY);
+			g2.drawImage(cue, (int)(balls.get(0).getX() + (mag * Math.cos(theta))), (int)(balls.get(0).getY() + (mag * Math.sin(theta))), this);
+		}
+	} // painting method
 }
