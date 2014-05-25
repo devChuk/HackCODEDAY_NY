@@ -6,6 +6,7 @@ public class Physics {
 	private final int BALL_SIZE = 25;
 
 	public boolean willItCollide(Ball a, Ball b) {
+		//Find 
 		double dx = Math.abs( a.getX() - b.getX() );
 		double dy = Math.abs( a.getY() - b.getY() );
 		
@@ -13,6 +14,10 @@ public class Physics {
 		return false;
 	}
 	
+	public boolean willWallCollide(Wall wall, Ball ball) {
+		
+	}
+
 	/*  ~~~~~~   Elastic collision calculator   ~~~~~  */
 	public void calcFinalVelocity(Ball A, Ball B) {
 		double AxVel = A.getXvel();
@@ -32,7 +37,7 @@ public class Physics {
 		double contactAngle = Math.atan2(dy, dx) * 180 / Math.PI;
 		
 		double theta = Math.atan2(dy, dx) * 180 / Math.PI;
-		//calculate A ball final X velocities
+		//calcu\late A ball final X velocities
 		double newAx = Bvel * Math.cos(Btheta - contactAngle) * Math.cos(contactAngle) + Avel * Math.sin(Atheta - contactAngle) * Math.cos(contactAngle + 45);
 		double newAy = Bvel * Math.cos(Btheta - contactAngle) * Math.sin(contactAngle) + Avel * Math.sin(Atheta - contactAngle) * Math.sin(contactAngle + 45);
 		
