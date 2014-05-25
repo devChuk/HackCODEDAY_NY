@@ -3,7 +3,7 @@
 import java.util.ArrayList;
 
 public class Physics {
-	private final int BALL_SIZE = 30;
+	private final int BALL_SIZE = 25;
 
 	public boolean willItCollide(Ball a, Ball b) {
 		double dx = Math.abs( a.getX() - b.getX() );
