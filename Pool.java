@@ -24,8 +24,8 @@ public class Pool extends JPanel{
 	int ddddy = cueY - rawY;
 	double multiplier = 0.1;
 	//Game mechanics variables
-	private int turn; //1 is player 1, 2 is player 2.
-	private int team1; //if 1, p1 is blue. if 2, p2 is blue.
+	private static int turn; //1 is player 1, 2 is player 2.
+	private static int team1; //if 1, p1 is blue. if 2, p2 is blue.
 	public Pool() {
 		Toolkit tkit = Toolkit.getDefaultToolkit();
 		poolTable = tkit.getImage(Pool.class.getResource("data/PoolTable.png"));
@@ -36,6 +36,7 @@ public class Pool extends JPanel{
 		cue = tkit.getImage(Pool.class.getResource("data/cue.png"));
 		icon = new ImageIcon("data/icon.png");
 		turn = 1;
+		team1 = 0;
 		addMouseListener(new MouseListener());
 		initialBallSetup();
 	}
@@ -106,7 +107,18 @@ public class Pool extends JPanel{
 				System.exit(0);
 			}
 			c.repaint();
-			
+			//check for first in
+			if (phys.first == 1) {
+				if (turn == 1)
+					team1 = 2;
+				else
+					team1 = 1; }
+			else if (phys.first == 2) {
+				if (turn == 1)
+					team1 = 1;
+				else
+					team1 = 2; }
+
 			//check for stuff
 			for (int i = 0; i < balls.size(); i++) {
 				for (int j = i; j < balls.size(); j++) {
@@ -187,6 +199,12 @@ public class Pool extends JPanel{
 		g2.drawImage(poolTable, 182, 163, this); //pool table dimensions 636 x 373
 		g2.drawString("POOL", 485, 25);
 		g2.drawString("Player " + Integer.toString(turn) +", it's your turn.", 440, 50);
+		if (team1 == 1) 
+			g2.drawString("Player 1, you are blue. Player 2, you are red.", 430, 75);
+		else if (team1 == 2)
+			g2.drawString("Player 1, you are red. Player 2, you are blue.", 430, 75);
+		else
+			g2.drawString("Table is now open", 440, 75);
 		g2.drawImage(whiteball, (int)balls.get(0).getX(), (int)balls.get(0).getY(), this);
 
 		for (int i = 1; i < balls.size(); i++) {
