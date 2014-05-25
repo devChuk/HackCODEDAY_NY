@@ -12,6 +12,7 @@ public class Pool extends JPanel{
 	Image whiteball;
 	Image blackball;
 	Image cue;
+	private static ImageIcon icon;
 	private static KeyStroke escapeKeyStroke = KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0, false);
 	private static boolean close;
 	private static ArrayList<Ball> balls = new ArrayList<Ball>();
@@ -28,6 +29,7 @@ public class Pool extends JPanel{
 		whiteball = tkit.getImage(Pool.class.getResource("data/white.png"));
 		blackball = tkit.getImage(Pool.class.getResource("data/black.png"));
 		cue = tkit.getImage(Pool.class.getResource("data/cue.png"));
+		icon = new ImageIcon("data/icon.png");
 		addMouseListener(new MouseListener());
 		initialBallSetup();
 	}
@@ -65,6 +67,7 @@ public class Pool extends JPanel{
 		frame.setResizable(false);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(1000, 700);
+		frame.setIconImage(icon.getImage());
 		Container c = frame.getContentPane();
 		c.add(p);
 		frame.setVisible(true);
