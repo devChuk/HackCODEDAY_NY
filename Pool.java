@@ -101,6 +101,8 @@ public class Pool extends JPanel{
 			for (int i = 0; i < balls.size(); i++) {
 				phys.checkWalls(balls.get(i));
 			}
+			//check for out of bounds
+			phys.checkOutOfBounds(balls);
 			
 			//move the balls
 			for (int i = 0; i < balls.size(); i++) {

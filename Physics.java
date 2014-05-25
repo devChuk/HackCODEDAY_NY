@@ -37,6 +37,22 @@ public class Physics {
 		if (y > 500 - (BALL_SIZE) && x > 237 && x < 474) a.setYvel(-a.getYvel());
 		if (y > 500 - (BALL_SIZE) && x > 526 && x < 765) a.setYvel(-a.getYvel());
 	}
+	
+	public void checkOutOfBounds(ArrayList<Ball> balls) {
+		for (int i = 0; i < balls.size(); i++) {
+			if (balls.get(i).getX() < 210 || balls.get(i).getY() > 504 - (BALL_SIZE) || 
+				balls.get(i).getX() > 798 - (BALL_SIZE) || balls.get(i).getY() < 194) {
+					if (i != 0) {
+						balls.remove(i);
+						i--;
+					}
+					if (i == 0) {
+						balls.get(0).setX(300);
+						balls.get(0).setY(400);
+					}
+				}
+		}
+	}
 
 	/*  ~~~~~~   Elastic collision calculator   ~~~~~  */
 	public void calcFinalVelocity(Ball A, Ball B) {
