@@ -33,7 +33,7 @@ public class Pool extends JPanel{
 		//add balls
 			//add cueball
 		CueBall cueball = new CueBall(300, 400);
-		cueball.setXvel(5.0);
+		//cueball.setXvel(5.0);
 		balls.add(cueball);
 		
 		int ballCounter = 1;
@@ -119,8 +119,8 @@ public class Pool extends JPanel{
 				int cueY = (int)balls.get(0).getY();
 				int dx = cueX - x;
 				int dy = cueY - y;
-				int multiplier = 10;
-				//balls.get(0).shoot(dx * multiplier, dy * multiplier);
+				double multiplier = 0.1;
+				balls.get(0).shoot((int)(dx * multiplier), (int)(dy * multiplier));
 				aboutToShoot = false;
 			}
 		}
@@ -133,7 +133,8 @@ public class Pool extends JPanel{
 			
 			g2.drawImage(poolTable, 182, 163, this); //pool table dimensions 636 x 373
 			
-			for (int i = 0; i < balls.size(); i++) {
+			g2.drawImage(whiteball, (int)balls.get(0).getX(), (int)balls.get(0).getY(), this);
+			for (int i = 1; i < balls.size(); i++) {
 				g2.drawImage(redball, (int)balls.get(i).getX(), (int)balls.get(i).getY(), this);
 			}
 			
