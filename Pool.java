@@ -29,7 +29,7 @@ public class Pool extends JPanel{
 		CueBall cueball = new CueBall(300, 400);
 		cueball.setXvel(5.0);
 		balls.add(cueball);
-		Ball anotherball = new Ball(1, 500, 395);
+		Ball anotherball = new Ball(1, 500, 405);
 		balls.add(anotherball);
 		Ball athirdball = new Ball(1, 600, 360);
 		balls.add(athirdball);
