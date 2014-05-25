@@ -12,7 +12,8 @@ public class Ball {
 	private boolean hidden; //If the ball goes into a hole, hidden gets set true on Pool.java
 	private int ballNumber;
 	private int color; //1:blue,2:red,3:black
-	private final int MaxV = 10;	
+	private final int MaxV = 10;
+	protected int cooldown = 0;
 
 	public Ball(int ballNumber, int x, int y, int colour) {
 		setX((double)x);
@@ -80,4 +81,14 @@ public class Ball {
 	public int getBallNumber() {return ballNumber;}
 	public void setBallNumber(int number) {ballNumber = number;}
 	public void shoot(int dx, int dy) {}
+	public void setCooldown() {
+		cooldown = 3;
+	}
+	public int getandReduceCooldown() {
+		if (cooldown > 0) cooldown --;
+		return cooldown;
+	}
+	public int getCooldown() {
+		return cooldown;
+	}
 }

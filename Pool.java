@@ -104,9 +104,14 @@ public class Pool extends JPanel{
 			//check for stuff
 			for (int i = 0; i < balls.size(); i++) {
 				for (int j = i; j < balls.size(); j++) {
-					if (phys.willItCollide(balls.get(i), balls.get(j))) {
+					if (phys.willItCollide(balls.get(i), balls.get(j)) && 
+						balls.get(i).getCooldown() == 0 && balls.get(j).getCooldown() == 0) {
 						phys.calcFinalVelocity(balls.get(i), balls.get(j));
+						balls.get(i).setCooldown();
+						balls.get(j).setCooldown();
 					}
+					balls.get(i).getandReduceCooldown();
+					balls.get(j).getandReduceCooldown();
 				}
 			}
 			//check walls
