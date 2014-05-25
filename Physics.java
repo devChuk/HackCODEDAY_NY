@@ -29,15 +29,19 @@ public class Physics {
 		double dx = AxVel - BxVel;
 		double dy = AyVel - ByVel;
 		
-		double contactAngle = Math.atan2(dy, dx) * 180 / Math.PI;
+		double dxx = Math.abs( A.getX() - B.getX() );
+		double dyy = Math.abs( A.getY() - B.getY() );
+		
+		double contactAngle = Math.atan2(dyy, dxx) * 180 / Math.PI;
+		//System.out.println(contactAngle);
 		
 		double theta = Math.atan2(dy, dx) * 180 / Math.PI;
 		//calculate A ball final X velocities
-		double newAx = Bvel * Math.cos(Btheta - contactAngle) * Math.cos(contactAngle) + Avel * Math.sin(Atheta - contactAngle) * Math.cos(contactAngle + 45);
-		double newAy = Bvel * Math.cos(Btheta - contactAngle) * Math.sin(contactAngle) + Avel * Math.sin(Atheta - contactAngle) * Math.sin(contactAngle + 45);
+		double newAx = Bvel * Math.cos(Math.toRadians(Btheta - contactAngle)) * Math.cos(Math.toRadians(contactAngle)) + Avel * Math.sin(Math.toRadians(Atheta - contactAngle)) * Math.cos(Math.toRadians(contactAngle + 45));
+		double newAy = Bvel * Math.cos(Math.toRadians(Btheta - contactAngle)) * Math.sin(Math.toRadians(contactAngle)) + Avel * Math.sin(Math.toRadians(Atheta - contactAngle)) * Math.sin(Math.toRadians(contactAngle + 45));
 		
-		double newBx = Avel * Math.cos(Atheta - contactAngle) * Math.cos(contactAngle) + Bvel * Math.sin(Btheta - contactAngle) * Math.cos(contactAngle + 45);
-		double newBy = Avel * Math.cos(Atheta - contactAngle) * Math.sin(contactAngle) + Bvel * Math.sin(Btheta - contactAngle) * Math.sin(contactAngle + 45);
+		double newBx = Avel * Math.cos(Math.toRadians(Atheta - contactAngle)) * Math.cos(Math.toRadians(contactAngle)) + Bvel * Math.sin(Math.toRadians(Btheta - contactAngle)) * Math.cos(Math.toRadians(contactAngle + 45));
+		double newBy = Avel * Math.cos(Math.toRadians(Atheta - contactAngle)) * Math.sin(Math.toRadians(contactAngle)) + Bvel * Math.sin(Math.toRadians(Btheta - contactAngle)) * Math.sin(Math.toRadians(contactAngle + 45));
 		
 		A.setXvel(newAx);
 		A.setYvel(newAy);

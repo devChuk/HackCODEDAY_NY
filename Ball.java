@@ -19,6 +19,7 @@ public class Ball {
 		setYvel(0);
 		setHidden(false);
 		this.ballNumber = ballNumber;
+		wang = 0.02;
 	}
 	public void setX(double hurr) {
 		x = hurr;
@@ -53,12 +54,17 @@ public class Ball {
 		hidden = durr;
 	}
 	public void slowdown() {
-		if (xVel >= wang) {
-			xVel -= wang;
+		double magnitude = Math.sqrt(xVel * xVel + yVel * yVel);
+		magnitude -= wang;
+		if (magnitude < 0) {
+			setXvel(0);
+			setYvel(0);
+			return;
 		}
-		if (yVel >= wang) {
-			yVel -= wang;
-		}
+		double theta = Math.atan2(yVel, xVel);
+		setXvel( magnitude * Math.cos(theta) );
+		setYvel( magnitude * Math.sin(theta) );
+		
 	}
 	public int getBallNumber() {return ballNumber;}
 	public void setBallNumber(int number) {ballNumber = number;}
