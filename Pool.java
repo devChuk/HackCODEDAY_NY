@@ -18,7 +18,7 @@ public class Pool extends JPanel{
 	
 	public Pool() {
 		Toolkit tkit = Toolkit.getDefaultToolkit();
-		poolTable = tkit.getImage(Pool.class.getResource("data/snookerTableBlue.jpg"));
+		poolTable = tkit.getImage(Pool.class.getResource("data/PoolTable.png"));
 		redball = tkit.getImage(Pool.class.getResource("data/red.png"));
 		blueball = tkit.getImage(Pool.class.getResource("data/blue.png"));
 		whiteball = tkit.getImage(Pool.class.getResource("data/white.png"));
