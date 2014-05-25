@@ -26,6 +26,9 @@ public class Pool extends JPanel{
 	//Game mechanics variables
 	private static int turn; //1 is player 1, 2 is player 2.
 	private static int team1; //if 1, p1 is blue. if 2, p2 is blue.
+	private static boolean scratch;
+	private static boolean endscratch;
+	
 	public Pool() {
 		Toolkit tkit = Toolkit.getDefaultToolkit();
 		poolTable = tkit.getImage(Pool.class.getResource("data/PoolTable.png"));
@@ -101,6 +104,23 @@ public class Pool extends JPanel{
 		frame.getRootPane().getActionMap().put("ESCAPE", escapeAction);
 		JOptionPane.showMessageDialog(frame, 	"Welcome to Pool.java, a game created by Brian Chuk & Patrick Tsai. \n Special thanks to Ida Huang and Christina Young. \n -----------------------------------------------------------------CONTROLS----------------------------------------------------------------- \n Use the mouse to aim your cue stick. The stick will aim at the direction of the opposite side of the cue ball. \n Then click again to hit the cue ball. The farther your mouse is from the cue ball, the harder you hit. \n Have fun and thanks for playing!");
 		while (true) {
+			boolean scratchplacement = true;
+			for (int i = 0; i < balls.size(); i++) {
+				if (balls.get(i).getXvel() > 0.05 && balls.get(i).getYvel() > 0.05) {
+					scratchplacement = false;
+				}
+			}
+			if (scratchplacement && scratch) {
+				balls.get(0).setX(MouseInfo.getPointerInfo().getLocation().getX());
+				balls.get(0).setY(MouseInfo.getPointerInfo().getLocation().getY());
+			}
+			if (endscratch) {
+				scratch = false;
+				phys.scratch = false;
+				endscratch = false;
+			}
+			
+			scratch = phys.scratch;
 			if (close) {
 				JOptionPane.showMessageDialog(frame, "Game over!");
 				frame.dispose();
@@ -166,6 +186,11 @@ public class Pool extends JPanel{
 	}
 	class MouseListener extends MouseAdapter {
 		public void mouseClicked(MouseEvent e) {
+			if (scratch) {
+				scratch = false;
+				endscratch = true;
+				return;
+			}
 			//System.out.println(e.getX() + "  " + e.getY());
 			//Position the cue
 			if (!aboutToShoot) {

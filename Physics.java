@@ -7,6 +7,7 @@ public class Physics {
 	private final int friction = 3;
 	private boolean open = true;
 	public int first = 0; //1 is blue
+	protected boolean scratch = false;
 
 	public boolean willItCollide(Ball a, Ball b) {
 		double dx = Math.abs( a.getX() - b.getX() );
@@ -40,7 +41,6 @@ public class Physics {
 		if (y > 500 - (BALL_SIZE) && x > 526 && x < 765) a.setYvel(-a.getYvel());
 	}
 	
-
 	public boolean getOpen() {
 		return open;
 	}
@@ -58,10 +58,11 @@ public class Physics {
 						}
 					}
 					if (i == 0) {
-						balls.get(0).setX(300);
-						balls.get(0).setY(350);
+						//balls.get(0).setX(300);
+						//balls.get(0).setY(350);
 						balls.get(0).setXvel(0);
 						balls.get(0).setYvel(0);
+						scratch = true;
 					}
 				}
 		}
