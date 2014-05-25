@@ -123,8 +123,12 @@ public class Pool extends JPanel{
 			}
 
 			//check if 8ball is in.
+			close = true;
 			for (int i = 0; i < balls.size(); i++){
-				if ()
+				if (balls.get(i).getColor() == 3) {
+					close = false;
+					break;
+				}
 			}
 			
 			try {
