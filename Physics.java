@@ -28,16 +28,21 @@ public class Physics {
 		double Avel = Math.sqrt(AxVel * AxVel + AyVel * AyVel);
 		double Bvel = Math.sqrt(BxVel * BxVel + ByVel * ByVel);
 		
-		double Atheta = Math.atan2(AyVel, AxVel) * 180 / Math.PI;
-		double Btheta = Math.atan2(ByVel, BxVel) * 180 / Math.PI;
+		double Atheta = Math.atan2(AyVel, AxVel);
+		double Btheta = Math.atan2(ByVel, BxVel);
 		
 		double dx = AxVel - BxVel;
 		double dy = AyVel - ByVel;
 		
-		double contactAngle = Math.atan2(dy, dx) * 180 / Math.PI;
+		double dxx = Math.abs( A.getX() - B.getX() );
+		double dyy = Math.abs( A.getY() - B.getY() );
 		
-		double theta = Math.atan2(dy, dx) * 180 / Math.PI;
-		//calcu\late A ball final X velocities
+		double contactAngle = Math.atan2(dyy, dxx);
+		//System.out.println(contactAngle);
+		
+		double theta = Math.atan2(dy, dx);
+		//calculate A ball final X velocities
+
 		double newAx = Bvel * Math.cos(Btheta - contactAngle) * Math.cos(contactAngle) + Avel * Math.sin(Atheta - contactAngle) * Math.cos(contactAngle + 45);
 		double newAy = Bvel * Math.cos(Btheta - contactAngle) * Math.sin(contactAngle) + Avel * Math.sin(Atheta - contactAngle) * Math.sin(contactAngle + 45);
 		
