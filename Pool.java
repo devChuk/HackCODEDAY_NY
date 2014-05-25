@@ -115,20 +115,21 @@ public class Pool extends JPanel{
 	class MouseListener extends MouseAdapter {
 		public void mouseClicked(MouseEvent e) {
 			//System.out.println(e.getX() + "  " + e.getY());
+			//Position the cue
 			if (!aboutToShoot) {
 				aboutToShoot = true;
 				cueX = e.getX();
 				cueY = e.getY();
 			}
 			else if (aboutToShoot) {
-				rawX = e.getX();
-				rawY = e.getY();
-				cueX = (int)balls.get(0).getX();
-				cueY = (int)balls.get(0).getY();
-				ddddx = cueX - rawX;
-				ddddy = cueY - rawY;
-				balls.get(0).shoot((int)(ddddx * multiplier), (int)(ddddy * multiplier));
-				aboutToShoot = false;
+				rawX = e.getX();	 				//mousex
+				rawY = e.getY();					//mousey
+				cueX = (int)balls.get(0).getX(); 	//cuex
+				cueY = (int)balls.get(0).getY(); 	//cuey
+				ddddx = cueX - rawX; 				//xvect from cue to mouse
+				ddddy = cueY - rawY;				//yvect from cue to mouse
+				balls.get(0).shoot((int)(ddddx * multiplier), (int)(ddddy * multiplier)); //inserts xvect and yvect into power
+				aboutToShoot = false;				//turns off shooting function
 			}
 		}
 	} // end of MouseListener	
@@ -149,7 +150,7 @@ public class Pool extends JPanel{
 				g2.drawImage(blueball, (int)balls.get(i).getX(), (int)balls.get(i).getY(), this);
 		}
 			
-		//paint the cue
+		//paint the cue//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		if (aboutToShoot) {
 			int dx = cueX - (int)balls.get(0).getX() - 12;
 			int dy = cueY - (int)balls.get(0).getY() - 12;
