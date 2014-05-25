@@ -48,7 +48,7 @@ public class Physics {
 					}
 					if (i == 0) {
 						balls.get(0).setX(300);
-						balls.get(0).setY(400);
+						balls.get(0).setY(350);
 						balls.get(0).setXvel(0);
 						balls.get(0).setYvel(0);
 					}
