@@ -23,6 +23,7 @@ public class Pool extends JPanel{
 	int ddddx = cueX - rawX;
 	int ddddy = cueY - rawY;
 	double multiplier = 0.1;
+	String _2bit;
 	public Pool() {
 		Toolkit tkit = Toolkit.getDefaultToolkit();
 		poolTable = tkit.getImage(Pool.class.getResource("data/PoolTable.png"));
