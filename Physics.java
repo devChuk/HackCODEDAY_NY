@@ -6,7 +6,7 @@ public class Physics {
 	private final int BALL_SIZE = 25;
 	private final int friction = 3;
 	private boolean open = true;
-	private int first = 1; //1 is blue
+	public int first = 0; //1 is blue
 
 	public boolean willItCollide(Ball a, Ball b) {
 		double dx = Math.abs( a.getX() - b.getX() );
