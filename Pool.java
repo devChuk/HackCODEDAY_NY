@@ -4,6 +4,7 @@ import java.net.*;
 import java.util.*;
 import java.awt.event.*;
 import java.awt.*;
+import java.applet.*;
  
 public class Pool extends JPanel{
 	private Image poolTable;
