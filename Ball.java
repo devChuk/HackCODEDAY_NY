@@ -12,6 +12,8 @@ public class Ball {
 	private boolean hidden; //If the ball goes into a hole, hidden gets set true on Pool.java
 	private int ballNumber;
 	
+	private final int MaxV = 10;
+	
 	public Ball(int ballNumber, int x, int y) {
 		setX((double)x);
 		setY((double)y);
@@ -40,10 +42,12 @@ public class Ball {
 		return yVel;
 	}
 	public void setXvel(double v) {
-		xVel = v;
+		if (v < MaxV) xVel = v;
+		else xVel = MaxV;
 	}
 	public void setYvel(double v) {
-		yVel = v;
+		if (v < MaxV) yVel = v;
+		else xVel = MaxV;
 	}
 	public void move() {
 		x += xVel;
