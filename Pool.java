@@ -152,25 +152,17 @@ public class Pool extends JPanel{
 				g2.drawImage(blueball, (int)balls.get(i).getX(), (int)balls.get(i).getY(), this);
 		}
 			
-		//paint the cue//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		//paint the cue
 		if (aboutToShoot) {
 			int dx = rawX - ((int)balls.get(0).getX() + 12); 	//vector from cue to ballx
 			int dy = rawY - ((int)balls.get(0).getY() + 12); 	//vector from cue to bally
 			double theta = Math.atan2(dy, dx);					//angle of stick
 			if (theta < 0) theta += 2 * Math.PI;				//some math thing I'm too lazy to understand for now
 			System.out.println(theta);
-			//int magX = (int)(rawX - balls.get(0).getX());		
-			//int magY = (int)(rawY - balls.get(0).getY());
-			//double mag = Math.sqrt(magX * magX + magY * magY);
-			
-			//System.out.println(theta);
-			//g2.rotate(Math.toRadians(-38 + theta), cueX, cueY);
 			g2.translate((int)balls.get(0).getX()+12,(int)balls.get(0).getY()+12);
 			g2.rotate(theta);
-			//g2.drawImage(cue, (int)(balls.get(0).getX() + (mag * Math.cos(theta))), (int)(balls.get(0).getY() + (mag * Math.sin(theta))), this);
 			int stickx = 15;
 			int sticky = -6;
-
 			g2.drawImage(cue, stickx, sticky, this);
 		}
 	} // painting method
