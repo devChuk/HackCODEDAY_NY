@@ -44,11 +44,34 @@ public class Pool extends JPanel{
 		
 		int ballCounter = 1;
 		for (int i = 1; i <= 5; i++) { // 5 layers
-			for (int j = 1; j <= i; j++) {
-				Ball newBall = new Ball(ballCounter, 600 + (i * 27), 350 - (14 * (i - 1)) + (28 * (j - 1)), 0);
+			for (int j = 1; j <= i; j++) { //1 is blue.
+				int hurr = 1;
+				if ((i % 2 == 0) && (i != 5) && (i != 3)) {
+					hurr = 2;
+					if (j % 2 == 0)
+						hurr = 1;
+				}
+				if ((i == 3) && (j == 3))
+					hurr = 2;
+				if ((i == 5) && (j % 2 != 0)) {
+					hurr = 2;
+				}
+				if ((i == 3) && (j == 2)) {
+					hurr = 3;
+				}
+				Ball newBall = new Ball(ballCounter, 600 + (i * 27), 350 - (14 * (i - 1)) + (28 * (j - 1)), hurr);
 				ballCounter++;
 				balls.add(newBall);
 			}
+		}
+		balls.get(0).setColor(0);
+		for (int i = 1; i < balls.size(); i++) {
+			if (i == 5)
+				balls.get(i).setColor(3);
+			else if (i % 2 == 0)
+				balls.get(i).setColor(2);
+			else	
+				balls.get(i).setColor(1);
 		}
 	}
 	public static void main(String[] args) {
@@ -135,10 +158,11 @@ public class Pool extends JPanel{
 		g2.drawImage(poolTable, 182, 163, this); //pool table dimensions 636 x 373
 		
 		g2.drawImage(whiteball, (int)balls.get(0).getX(), (int)balls.get(0).getY(), this);
+
 		for (int i = 1; i < balls.size(); i++) {
-			if (i == 5)
+			if (balls.get(i).getColor() == 3)
 				g2.drawImage(blackball, (int)balls.get(i).getX(), (int)balls.get(i).getY(), this);
-			else if (i % 2 == 0)
+			else if (balls.get(i).getColor() == 2)
 				g2.drawImage(redball, (int)balls.get(i).getX(), (int)balls.get(i).getY(), this);
 			else
 				g2.drawImage(blueball, (int)balls.get(i).getX(), (int)balls.get(i).getY(), this);

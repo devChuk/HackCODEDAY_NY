@@ -27,6 +27,9 @@ public class Ball {
 	public int getColor() {
 		return color;
 	}
+	public int setColor(int color) {
+		return color;
+	}
 	public void setX(double hurr) {
 		x = hurr;
 	}
